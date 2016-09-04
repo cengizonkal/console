@@ -1,0 +1,14 @@
+<?php
+require __DIR__.'/vendor/autoload.php';
+
+use App\Test;
+use Symfony\Component\Console\Application;
+
+
+$application = new Application();
+$commands = require "kernel.php";
+// register commands using kernel file
+foreach($commands as $command){
+    $application->add(new $command);
+}
+$application->run();
