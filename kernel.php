@@ -1,6 +1,7 @@
 <?php
 
 return [
-    'Commands\\Test',
-    'Commands\\Demo',
+
+    \Commands\Demo::class,
+    \Commands\EasyDemo::class
 ];

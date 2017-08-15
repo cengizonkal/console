@@ -30,10 +30,16 @@ abstract class EasyCommand extends Command
 
     protected function initialize(InputInterface $input, OutputInterface $output)
     {
+        $this->input = $input;
+        $this->output = $output;
 
     }
 
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        $this->handle();
+    }
 
-    abstract function handle();
+    public abstract function handle();
 
 }
