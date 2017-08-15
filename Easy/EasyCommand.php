@@ -16,7 +16,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 abstract class EasyCommand extends Command
 {
-    protected $progressBar;
+
     /**
      * The input interface implementation.
      *

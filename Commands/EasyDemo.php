@@ -5,7 +5,7 @@ namespace Commands;
 
 
 use Easy\EasyCommand;
-use Symfony\Component\Console\Input\InputArgument;
+
 
 
 class EasyDemo extends EasyCommand
@@ -31,6 +31,10 @@ class EasyDemo extends EasyCommand
 
         $c = $this->choose('gender', ['male', 'female']);
         $this->message($c);
+
+        $this->io->progressStart(100);
+        $this->io->progressAdvance();
+        $this->io->progressFinish();
 
 
     }
