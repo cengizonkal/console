@@ -17,8 +17,17 @@ class EasyDemo extends EasyCommand
             ->addArgument('arg1', InputArgument::OPTIONAL, 'Demo argument')
             ->setHelp("this shows help lines");
     }
+
     public function handle()
     {
+        $a = $this->ask('is this ok');
+        $this->output->writeln($a);
+
+        $a = $this->confirm('is this ok ?');
+
+
         $this->output->writeln('Test');
     }
+
+
 }
