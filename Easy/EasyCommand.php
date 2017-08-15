@@ -43,6 +43,11 @@ abstract class EasyCommand extends Command
     protected $arguments = [];
     protected $help = '';
 
+    /**
+     * @return string name of the command
+     */
+    abstract protected function name();
+
     protected function ask($question, $default = null)
     {
         return $this->io->ask($question, $default);
@@ -55,10 +60,11 @@ abstract class EasyCommand extends Command
 
     protected function configure()
     {
-        $this->setName($this->name)
+        $this->setName($this->name())
             ->setDescription($this->description)
-        ->setHelp($this->help);
-        foreach ($this->arguments as $argument){
+            ->setHelp($this->help);
+        //todo easy way to add arguments
+        foreach ($this->arguments as $argument) {
             $this->addArgument($argument->name, $argument->type, $argument->description);
         }
 
@@ -110,5 +116,14 @@ abstract class EasyCommand extends Command
     }
 
     public abstract function handle();
+
+    protected function comment($message)
+    {
+        $this->io->comment($message);
+    }
+
+    protected function note($message){
+        $this->io->note($message);
+    }
 
 }

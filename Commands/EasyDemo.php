@@ -12,12 +12,17 @@ class EasyDemo extends EasyCommand
 {
 
 
-    protected $name = 'easyDemo';
-
 
     public function handle()
     {
-        $this->message("test");
+        $this->title('Easy Command Demo Title');
+        $this->warning('this a warning');
+        $this->error('this a error');
+        $this->success('Successful');
+        $this->message('simple text');
+        $this->comment('comment');
+        $this->note('note');
+
         $a = $this->ask('is this ok');
         $this->output->writeln($a);
 
@@ -30,5 +35,13 @@ class EasyDemo extends EasyCommand
 
     }
 
+
+    /**
+     * @return string name of the command
+     */
+    protected function name()
+    {
+        return 'easyDemo';
+    }
 
 }
