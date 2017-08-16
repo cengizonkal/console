@@ -9,6 +9,10 @@
     "psr-4": {
       "Commands\\": "Commands",
       "Easy\\": "Easy"
-    }
+    },
+    "files": [
+      "helpers.php"
+    ]
   }
 }
+

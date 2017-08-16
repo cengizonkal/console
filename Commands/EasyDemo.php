@@ -6,6 +6,7 @@ namespace Commands;
 
 use Easy\EasyArgument;
 use Easy\EasyCommand;
+use Easy\EasyDB;
 
 
 class EasyDemo extends EasyCommand
@@ -14,6 +15,9 @@ class EasyDemo extends EasyCommand
 
     public function handle()
     {
+//        $db = new EasyDB();
+//        dd($db->table('users')->get());
+
         $this->message('argument:' . $this->getArgument('arg1'));
 
         $this->title('Easy Command Demo Title');
@@ -25,16 +29,19 @@ class EasyDemo extends EasyCommand
         $this->note('note');
 
         $a = $this->ask('is this ok');
-        $this->output->writeln($a);
+        $this->message($a);
 
         $a = $this->confirm('is this ok');
-        $this->output->writeln($a);
+
 
         $c = $this->choose('gender', ['male', 'female']);
         $this->message($c);
 
         $this->io->progressStart(100);
-        $this->io->progressAdvance();
+        for ($i = 0; $i < 100; $i += 20) {
+            $this->io->progressAdvance(20);
+            sleep(1);
+        }
         $this->io->progressFinish();
 
 
@@ -58,4 +65,6 @@ class EasyDemo extends EasyCommand
             new EasyArgument('arg1', EasyArgument::OPTIONAL),
         ];
     }
+
+
 }

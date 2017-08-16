@@ -50,7 +50,7 @@ abstract class EasyCommand extends Command
 
     protected function confirm($question, $default = false)
     {
-        $this->io->confirm($question, $default);
+        return $this->io->confirm($question, $default);
     }
 
     protected function configure()
