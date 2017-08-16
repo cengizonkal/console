@@ -6,12 +6,9 @@ namespace Easy;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\Input;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\Output;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Question\ConfirmationQuestion;
-use Symfony\Component\Console\Question\Question;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
 abstract class EasyCommand extends Command
@@ -35,12 +32,10 @@ abstract class EasyCommand extends Command
      */
     protected $io;
 
-    protected $name = 'command:name';
+
     protected $description = 'description';
-    /**
-     * @var EasyArgument[]
-     */
-    protected $arguments = [];
+
+
     protected $help = '';
 
     /**
@@ -63,8 +58,7 @@ abstract class EasyCommand extends Command
         $this->setName($this->name())
             ->setDescription($this->description)
             ->setHelp($this->help);
-        //todo easy way to add arguments
-        foreach ($this->arguments as $argument) {
+        foreach ($this->arguments() as $argument) {
             $this->addArgument($argument->name, $argument->type, $argument->description);
         }
 
@@ -124,6 +118,16 @@ abstract class EasyCommand extends Command
 
     protected function note($message){
         $this->io->note($message);
+    }
+
+    /**
+     * @return EasyArgument[]
+     */
+    abstract protected function arguments();
+
+    protected function getArgument($name)
+    {
+         return $this->input->getArgument($name);
     }
 
 }

@@ -4,17 +4,18 @@
 namespace Commands;
 
 
+use Easy\EasyArgument;
 use Easy\EasyCommand;
-
 
 
 class EasyDemo extends EasyCommand
 {
 
 
-
     public function handle()
     {
+        $this->message('argument:' . $this->getArgument('arg1'));
+
         $this->title('Easy Command Demo Title');
         $this->warning('this a warning');
         $this->error('this a error');
@@ -48,4 +49,13 @@ class EasyDemo extends EasyCommand
         return 'easyDemo';
     }
 
+    /**
+     * @return EasyArgument[]
+     */
+    protected function arguments()
+    {
+        return [
+            new EasyArgument('arg1', EasyArgument::OPTIONAL),
+        ];
+    }
 }
