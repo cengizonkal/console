@@ -31,7 +31,11 @@ class EasyDemo extends EasyCommand
         $a = $this->ask('This is a question');
         $this->message($a);
 
-        $a = $this->confirm('Please confirm');
+        if($this->confirm('Please confirm')){
+            $this->message('Confirmed');
+        }else{
+            $this->message('Declined');
+        };
 
 
         $c = $this->choose('Choose a gender', ['male', 'female']);
