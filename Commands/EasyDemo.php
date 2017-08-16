@@ -28,13 +28,13 @@ class EasyDemo extends EasyCommand
         $this->comment('comment');
         $this->note('note');
 
-        $a = $this->ask('is this ok');
+        $a = $this->ask('This is a question');
         $this->message($a);
 
-        $a = $this->confirm('is this ok');
+        $a = $this->confirm('Please confirm');
 
 
-        $c = $this->choose('gender', ['male', 'female']);
+        $c = $this->choose('Choose a gender', ['male', 'female']);
         $this->message($c);
 
         $this->io->progressStart(100);
