@@ -18,6 +18,7 @@ class EasyDemo extends EasyCommand
 //        $db = new EasyDB();
 //        dd($db->table('users')->get());
 
+
         $this->message('argument:' . $this->getArgument('arg1'));
 
         $this->title('Easy Command Demo Title');
@@ -31,9 +32,9 @@ class EasyDemo extends EasyCommand
         $a = $this->ask('This is a question');
         $this->message($a);
 
-        if($this->confirm('Please confirm')){
+        if ($this->confirm('Please confirm')) {
             $this->message('Confirmed');
-        }else{
+        } else {
             $this->message('Declined');
         };
 

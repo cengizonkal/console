@@ -16,7 +16,8 @@ class EasyDB extends Capsule
 
     public function connect()
     {
-        $this->addConnection(config('database'));
-
+        foreach (config('database') as $connection => $database) {
+            $this->addConnection($database, $connection);
+        }
     }
 }
